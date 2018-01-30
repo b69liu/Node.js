@@ -23,22 +23,46 @@ superagent.get(cnodeUrl)
 	    console.log(topicUrls);
 
 		//wait until all fatched
+		var result;
 		var ep = new eventproxy();
 		ep.after('got_file', 3 ,function (datas){
-             datas = datas.map(function(pair){
+             result = datas.map(function(pair){
 				var Urlcontent = pair[0];
 				var Htmlcontent= pair[1];
 				var $ = cheerio.load(Htmlcontent);
+				var newhref = $('.reply_author').eq(0).attr('href'); //comment author's page
+				newhref = url.resolve(cnodeUrl, newhref);
+				
+
+                var tit = $('.topic_full_title').text().trim();
+				var comt1 = $('.reply_content').eq(0).text().trim();
+				var aut =  $('.reply_author').eq(0).text();
+				var sc;
+				/*get score*/
 				return({ //return an object
-					title: $('.topic_full_title').text().trim(),
+					title: tit,
 					href: Urlcontent,
-					comment1: $('.reply_content').eq(0).text().trim()
+					comment1: comt1,
+					author: aut,
+                    score1: newhref
 				   	
 				});//end return	 
 			});//end map
             console.log('final:');
-            console.log(datas);
-				
+            console.log(result[0].score1);
+			
+			result.forEach(function (entry){   //a entry is a obj including 5 fields
+					superagent.get(entry.score1)
+					   .end(function (err2, res2){
+					       if (err2) {
+						      return console.error(err2);;
+						   }//end if err2
+						   console.log('fetch comment score successful');
+						   var $ = cheerio.load(res2.text);
+						   entry.score1 = $("span.big").eq(1).text();
+						   console.log(entry);
+					   })//end end
+			})//end rtforeach
 		});//end ep.after
 		
 		//get data from each link with js method 'foreach'
