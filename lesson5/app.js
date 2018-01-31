@@ -4,7 +4,7 @@ var concurrencycount = 0;
 
 /*fake a fetch function*/
 var fetchUrl = function (url,callback){
-	var delaytime = parseInt((Math.random() * 1000000) % 2000, 10);  //redix = dixcimal
+	var delaytime = parseInt((Math.random() * 1000000) % 2000, 10);  //redix = decimal
     concurrencycount++;                                          //start fake connection
     console.log('current connection number is ', concurrencycount,
 			'，now fatching is ', url, ', taking' + delaytime + 'ms');  
