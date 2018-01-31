@@ -11,7 +11,7 @@ var fetchUrl = function (url,callback){
 	setTimeout(
 		function(){
         concurrencycount--;
-	    callback(null, url + ' html content');                  //connection finished
+	    callback( null, url + ' html content');                  //store things to results
 	},delaytime);
 }//end fetchUrl
 
@@ -22,10 +22,10 @@ for(var i=0; i<30; i++){
 }
 
 // ...or ES2017 async functions
-async.mapLimit(urls, 5, function(url, callback) {
+async.mapLimit(urls, 5, function(url, callback) {     //this callback will store its parameter into results as array
     fetchUrl(url,callback);
     
-}, (err, results) => {
+}, (err, results) => {                                //  -----------------------------------------^
     if (err) console.err(err);;
     // results is now an array of the response bodies
     console.log("final:");
