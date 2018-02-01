@@ -1,0 +1,14 @@
+{
+  "name": "lesson6",
+  "version": "1.0.0",
+  "description": "testing",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Caleb",
+  "license": "ISC",
+  "dependencies": {
+    "should": "^13.2.1"
+  }
+}
