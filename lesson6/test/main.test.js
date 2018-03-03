@@ -24,7 +24,7 @@ describe('test/main.test.js', function () {                     //remember it
              (function (){main.fibonacci(-1)}).should.throw('n should >= 0');
 	  });//end it
 	  it('should throw when n is not a number', function () {
-            (function (){main.fibonacci('hi')}).should.throw('n should be a Number'); 
+             (function (){main.fibonacci('hi')}).should.throw('n should be a Number'); 
       });//end it
 	
 	  });//end of des
