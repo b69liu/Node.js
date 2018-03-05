@@ -4,14 +4,19 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var multer = require('multer');
+var cookieParser = require('cookie-parser');
 
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false }) //use querystring
 var upload = multer({dest:'/temp/'});
+// or app.use(multer({ dest: '/tmp/'}).array('image'));
+
 
 app.use(express.static('public'));
+app.use(cookieParser());
 
 
+/** normal get request to get a html */
 app.get('/',function(req,res){
 		console.log('get /');
 		//res.send('hello world');
@@ -23,8 +28,23 @@ app.get('/',function(req,res){
 app.get('/list_usr',function(req,res){
 		console.log('get list');
 		res.send('user list');
+		res.end();
 });
 
+/** send a get with cookie and return the cookie */
+/** curl url --cookie "MyName=Caleb;Action=test" */
+app.get('/send_cookie', function(req,res){
+		//console.log(req.cookies[0]);
+		for(let key in req.cookies){
+		    res.write('key:'+key);
+			res.write('<br />');
+			res.write('value:'+req.cookies[key]);
+			res.write('<br />');
+
+		}
+		res.end();
+		
+});
 
 app.post('/',urlencodedParser, function(req,res){
 		console.log('post');
