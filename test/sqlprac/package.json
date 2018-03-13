@@ -1,0 +1,18 @@
+{
+  "name": "sqlprac",
+  "version": "1.0.0",
+  "description": "used to practice with mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "nodejs"
+  ],
+  "author": "Caleb Liu",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
+}
