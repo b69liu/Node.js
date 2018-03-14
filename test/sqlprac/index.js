@@ -9,14 +9,14 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT name FROM math where age < 100', function(err,results,fields){
+connection.query('SELECT Concat(name, \' is \',age,\' old\') as info FROM math where age < 100', function(err,results,fields){
 		if(err){
 		    console.log(err);
 		}
 
 		console.log("result:");
 		results.forEach((entry)=>{
-				console.log('Name: '+ entry.name);
+				console.log('Math student: '+ entry.info);
 		});
 });
 
