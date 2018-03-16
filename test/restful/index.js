@@ -18,6 +18,20 @@ app.get('/list_user',function(req,res){
 		});
 });
 
+app.get('/titles',function(req,res){
+		var resContent = '';
+		fs.readFile(__dirname + '/movie.json','utf8', function(err,data){
+				if(err){
+				    console.log(err);
+				}else{
+                    resContent += data;
+					res.end(resContent);
+				}
+				
+		});
+});
+
+
 /** templated user to add*/
 user = { 'usernew':{
 	   'name':'newone',
