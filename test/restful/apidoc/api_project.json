@@ -1,0 +1,1 @@
+{  "title": "Caleb's API doc",  "url": "https://127.0.0.1:8000",  "name": "restful",  "version": "1.0.0",  "description": "practice restful api",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2018-03-20T17:36:58.606Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }}

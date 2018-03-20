@@ -2,6 +2,10 @@
   "name": "restful",
   "version": "1.0.0",
   "description": "practice restful api",
+  "apidoc": {
+    "title": "Caleb's API doc",
+    "url" : "https://127.0.0.1:8000"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
