@@ -1,6 +1,6 @@
 var app = require('../app');
 var supertest = require('supertest');
-var request = supertest(app);
+var request = supertest.agent(app);  //supertest.(app); not recording cookie
 var should = require('should');
 
 
